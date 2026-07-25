@@ -8421,8 +8421,42 @@ body.light-mode .service-item:hover {
     letter-spacing: -0.5px !important;
 }
 
-/* 4. Button Layout Consistency */
-.btn-default,
+/* 4. Button Layout Consistency & Arrow Separation */
+.btn-default {
+    border-radius: 30px !important;
+    padding: 14px 58px 14px 28px !important; /* Generous right padding ensures text and arrow icon never overlap */
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    white-space: nowrap !important;
+}
+
+.btn-default::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: 22px !important;
+    left: auto !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: url('../images/icon-arrow.svg') no-repeat center center / contain !important;
+    transform: translateY(-50%) !important;
+    transition: transform 0.3s ease, filter 0.3s ease !important;
+}
+
+.btn-default:hover {
+    transform: translateY(-2px) !important;
+}
+
+.btn-default:hover::before {
+    transform: translate(4px, -50%) !important;
+    filter: brightness(0) !important;
+}
+
 .btn-login,
 .btn-signup {
     border-radius: 30px !important;
@@ -8434,10 +8468,6 @@ body.light-mode .service-item:hover {
     justify-content: center !important;
     gap: 6px !important;
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-}
-
-.btn-default:hover {
-    transform: translateY(-2px) !important;
 }
 
 /* 5. Footer Layout Framing */
