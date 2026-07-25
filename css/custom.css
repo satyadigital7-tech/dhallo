@@ -1124,6 +1124,8 @@ header.main-header .header-sticky.active{
 }
 
 .about-company-item{
+	padding: 38px 32px !important;
+	border-radius: 20px !important;
 	height: calc(100% - 30px);
 	margin-bottom: 30px;
 }
@@ -8994,5 +8996,21 @@ body.light-mode .modal-body .input-group-text {
     border-color: #C8E6C9 !important;
     color: #0E543B !important;
 }
+
+/* ==========================================================================
+   FEATURE BOX CARD PADDING FIX
+   ========================================================================== */
+
+.about-company-item {
+    padding: 38px 32px !important;
+    border-radius: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .about-company-item {
+        padding: 28px 22px !important;
+    }
+}
+
 
 
