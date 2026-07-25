@@ -222,7 +222,7 @@
             if (text.includes('home loan') || text.includes('house loan') || text.includes('mortgage') || text.includes('flat loan')) {
                 const response = `
                     🏠 <strong>Dhallo Home Loan Overview:</strong><br>
-                    • <strong>Lowest Interest Rates:</strong> Starting at 8.35% p.a.<br>
+                    • <strong>Lowest Interest Rates:</strong> Starting at 7.2% p.a.<br>
                     • <strong>Max Tenure:</strong> Up to 30 Years<br>
                     • <strong>Loan Amount:</strong> Up to ₹10 Crores<br>
                     • <strong>Partner Banks:</strong> SBI, HDFC, ICICI, Axis, Kotak & 150+ Banks<br>
