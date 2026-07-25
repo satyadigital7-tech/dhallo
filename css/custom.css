@@ -8192,7 +8192,8 @@ body.light-mode .navbar-nav .nav-item.active .nav-link {
 }
 
 /* Theme Toggle Button */
-.theme-toggle-btn {
+.theme-toggle-btn,
+.themeToggleBtnTrigger {
     width: 42px !important;
     height: 42px !important;
     border-radius: 50% !important;
@@ -8205,13 +8206,59 @@ body.light-mode .navbar-nav .nav-item.active .nav-link {
     font-size: 16px !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
+    outline: none !important;
 }
 
-.theme-toggle-btn:hover {
+.theme-toggle-btn i,
+.theme-toggle-btn svg,
+.themeToggleBtnTrigger i,
+.themeToggleBtnTrigger svg {
+    color: #D1A657 !important;
+    transition: color 0.3s ease, transform 0.4s ease !important;
+    z-index: 2 !important;
+}
+
+.theme-toggle-btn:hover,
+.themeToggleBtnTrigger:hover {
     background: #D1A657 !important;
     color: #041C12 !important;
     transform: rotate(360deg) scale(1.05) !important;
     box-shadow: 0 0 15px rgba(209, 166, 87, 0.5) !important;
+}
+
+.theme-toggle-btn:hover i,
+.theme-toggle-btn:hover svg,
+.themeToggleBtnTrigger:hover i,
+.themeToggleBtnTrigger:hover svg {
+    color: #041C12 !important; /* Crisp high contrast icon on gold background */
+}
+
+/* Light Mode Theme Toggle Hover */
+body.light-mode .theme-toggle-btn,
+body.light-mode .themeToggleBtnTrigger {
+    border-color: #0E543B !important;
+    color: #0E543B !important;
+    background: #EBF2EE !important;
+}
+
+body.light-mode .theme-toggle-btn i,
+body.light-mode .theme-toggle-btn svg,
+body.light-mode .themeToggleBtnTrigger i,
+body.light-mode .themeToggleBtnTrigger svg {
+    color: #0E543B !important;
+}
+
+body.light-mode .theme-toggle-btn:hover,
+body.light-mode .themeToggleBtnTrigger:hover {
+    background: #0E543B !important;
+    color: #FFFFFF !important;
+}
+
+body.light-mode .theme-toggle-btn:hover i,
+body.light-mode .theme-toggle-btn:hover svg,
+body.light-mode .themeToggleBtnTrigger:hover i,
+body.light-mode .themeToggleBtnTrigger:hover svg {
+    color: #FFFFFF !important;
 }
 
 /* Call Now Header Button */
@@ -8227,11 +8274,22 @@ body.light-mode .navbar-nav .nav-item.active .nav-link {
     transition: all 0.3s ease !important;
 }
 
+.btn-header-call i,
+.btn-header-call svg {
+    color: #00E676 !important;
+    transition: color 0.3s ease !important;
+}
+
 .btn-header-call:hover {
     background: #00E676 !important;
     color: #041C12 !important;
     box-shadow: 0 0 18px rgba(0, 230, 118, 0.4) !important;
     transform: translateY(-1px) !important;
+}
+
+.btn-header-call:hover i,
+.btn-header-call:hover svg {
+    color: #041C12 !important;
 }
 
 /* Apply Now Header Button */
