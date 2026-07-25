@@ -1,5 +1,6 @@
 /* ==========================================================================
    DHALLO CORPORATE FINANCIAL SERVICES - AI CHATBOT ENGINE
+   (Standalone Floating Chatbot Widget)
    ========================================================================== */
 
 (function($) {
@@ -203,7 +204,6 @@
             { label: '🏢 Loan Against Property', action: 'lap_loan' },
             { label: '🚘 Car & Working Capital', action: 'other_loans' },
             { label: '🧮 EMI Calculator', action: 'emi_calc' },
-            { label: '📋 Instant Loan Application', action: 'open_modal', highlight: true },
             { label: '📞 Contact Senior Advisor', action: 'contact_advisor' }
         ];
 
@@ -227,12 +227,12 @@
                     • <strong>Loan Amount:</strong> Up to ₹10 Crores<br>
                     • <strong>Partner Banks:</strong> SBI, HDFC, ICICI, Axis, Kotak & 150+ Banks<br>
                     • <strong>Special Benefits:</strong> Zero doorstep collection fees, fast sanction in 48 hrs.<br><br>
-                    Would you like to check your eligibility or apply now?
+                    Would you like to check your eligibility or calculate EMI?
                 `;
                 const chips = [
-                    { label: '⚡ Apply for Home Loan', action: 'apply_home_loan', highlight: true },
                     { label: '📄 Required Documents', action: 'docs_home' },
                     { label: '🧮 Check EMI', action: 'emi_calc' },
+                    { label: '📞 Talk to Advisor', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -248,8 +248,8 @@
                     Empower your business growth today!
                 `;
                 const chips = [
-                    { label: '⚡ Apply for Business Loan', action: 'apply_business_loan', highlight: true },
                     { label: '📄 Business Loan Docs', action: 'docs_business' },
+                    { label: '📞 Request Call back', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -264,8 +264,7 @@
                     Unlock the hidden cash value of your property!
                 `;
                 const chips = [
-                    { label: '⚡ Apply for LAP', action: 'apply_lap', highlight: true },
-                    { label: '📞 Request Call back', action: 'contact_advisor' },
+                    { label: '📞 Request Call back', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -280,7 +279,7 @@
                     Our Dhallo financial advisors can negotiate customized repayment schedules tailored to your cashflow.
                 `;
                 const chips = [
-                    { label: '📋 Apply for Exact Quote', action: 'open_modal', highlight: true },
+                    { label: '📞 Contact Senior Advisor', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -295,7 +294,7 @@
                     5. <strong>Property Papers:</strong> Title Deed & Link Documents (for LAP / Home Loan).
                 `;
                 const chips = [
-                    { label: '📋 Start Digital Application', action: 'open_modal', highlight: true },
+                    { label: '📞 Request Advisor Assistance', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -309,7 +308,7 @@
                     We work with 150+ Banks & NBFCs, ensuring high approval chances even for complex profiles!
                 `;
                 const chips = [
-                    { label: '⚡ Submit Details for Eligibility Check', action: 'open_modal', highlight: true },
+                    { label: '📞 Speak with Loan Specialist', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -323,22 +322,10 @@
                     🕒 <strong>Working Hours:</strong> Mon - Sat: 9:30 AM - 7:00 PM
                 `;
                 const chips = [
-                    { label: '💬 Apply Online Now', action: 'open_modal', highlight: true },
+                    { label: '📞 Call Now (+91 96663 95995)', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
-
-            } else if (text.includes('apply') || text.includes('form') || text.includes('register') || text.includes('book')) {
-                const response = `
-                    🚀 <strong>Instant Application Ready!</strong><br>
-                    Opening our instant digital application modal for you now...
-                `;
-                appendBotMessage(response);
-                setTimeout(() => {
-                    if (typeof openLoanModal === 'function') {
-                        openLoanModal('General Loan');
-                    }
-                }, 600);
 
             } else if (text.includes('hi') || text.includes('hello') || text.includes('hey') || text.includes('namaste')) {
                 const response = `
@@ -347,7 +334,7 @@
                 const chips = [
                     { label: '🏠 Home Loan', action: 'home_loan' },
                     { label: '💼 Business Loan', action: 'business_loan' },
-                    { label: '⚡ Apply Now', action: 'open_modal', highlight: true }
+                    { label: '📞 Contact Advisor', action: 'contact_advisor', highlight: true }
                 ];
                 appendBotMessage(response, chips);
 
@@ -357,8 +344,7 @@
                     Our Senior Financial Consultants are ready to compare 150+ Banks & NBFCs to offer you the lowest interest rate and maximum loan amount.
                 `;
                 const chips = [
-                    { label: '📋 Apply for Instant Quote', action: 'open_modal', highlight: true },
-                    { label: '📞 Contact Advisor (+91 96663 95995)', action: 'contact_advisor' },
+                    { label: '📞 Contact Advisor (+91 96663 95995)', action: 'contact_advisor', highlight: true },
                     { label: '↩️ Main Menu', action: 'welcome' }
                 ];
                 appendBotMessage(response, chips);
@@ -370,38 +356,6 @@
     $(document).on('click', '.dhallo-chip-btn', function() {
         const action = $(this).data('action');
         const chipText = $(this).text().trim();
-
-        if (action === 'open_modal') {
-            appendUserMessage(chipText);
-            if (typeof openLoanModal === 'function') {
-                openLoanModal('Instant Financial Consultation');
-            }
-            return;
-        }
-
-        if (action === 'apply_home_loan') {
-            appendUserMessage(chipText);
-            if (typeof openLoanModal === 'function') {
-                openLoanModal('Home Loan');
-            }
-            return;
-        }
-
-        if (action === 'apply_business_loan') {
-            appendUserMessage(chipText);
-            if (typeof openLoanModal === 'function') {
-                openLoanModal('Business Loan');
-            }
-            return;
-        }
-
-        if (action === 'apply_lap') {
-            appendUserMessage(chipText);
-            if (typeof openLoanModal === 'function') {
-                openLoanModal('Loan Against Property (LAP)');
-            }
-            return;
-        }
 
         if (action === 'contact_advisor') {
             appendUserMessage(chipText);
@@ -499,30 +453,6 @@
             inputEl.val('');
             processUserMessage(text);
         });
-
-        /* ==========================================================================
-           AUTOMATIC HOME PAGE POPUP MODAL TRIGGER
-           "user open the website automatically come"
-           ========================================================================== */
-        const isHomePage = $('body').hasClass('home-page') || 
-                           window.location.pathname.endsWith('index.html') || 
-                           window.location.pathname === '/' || 
-                           window.location.pathname === '';
-
-        if (isHomePage) {
-            // Auto open the popup modal after page load & preloader fade out (1.4s)
-            setTimeout(function() {
-                if (typeof openLoanModal === 'function') {
-                    openLoanModal('Instant Financial Consultation');
-                } else {
-                    const modalEl = document.getElementById('loanApplyModal');
-                    if (modalEl && typeof bootstrap !== 'undefined') {
-                        const bsModal = new bootstrap.Modal(modalEl);
-                        bsModal.show();
-                    }
-                }
-            }, 1400);
-        }
     });
 
 })(jQuery);

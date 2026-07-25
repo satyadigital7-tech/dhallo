@@ -1272,5 +1272,87 @@
 </div>
 <!-- Loan Application Popup Modal End -->
 
+<!-- Automatic Home Page Welcome Popup Modal Start -->
+<div class="modal fade" id="homeAutoWelcomeModal" tabindex="-1" aria-labelledby="homeAutoWelcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 24px; overflow: hidden; background-color: var(--card-bg);">
+            <div class="modal-header text-white p-4" style="background: linear-gradient(135deg, #041C12 0%, #0E543B 60%, #00E676 100%); border-bottom: 1px solid var(--border-color);">
+                <div>
+                    <span class="badge bg-warning text-dark font-weight-bold mb-2 px-3 py-2 fs-7" style="border-radius: 20px;">🔥 Welcome Special Offer</span>
+                    <h3 class="modal-title font-weight-bold text-white mb-1" id="homeAutoWelcomeModalLabel">Welcome to Dhallo Financial Services</h3>
+                    <p class="text-white-50 mb-0 small"><i class="fa-solid fa-building-columns text-warning me-1"></i> Get Lowest Interest Rate & Fast Sanction from 150+ Partner Banks within 15 Mins</p>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <form id="homeWelcomeForm" onsubmit="handleHomeWelcomeSubmit(event)">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label font-weight-bold">Full Name *</label>
+                            <input type="text" class="form-control" id="hwName" placeholder="Enter your name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label font-weight-bold">Mobile Number (WhatsApp) *</label>
+                            <input type="tel" class="form-control" id="hwPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label font-weight-bold">Select Loan Requirement *</label>
+                            <select class="form-select" id="hwLoanType" required>
+                                <option value="Home Loan">Home Loan (Starting @ 8.35%)</option>
+                                <option value="Business Loan">Business Loan (Collateral Free)</option>
+                                <option value="Loan Against Property (LAP)">Loan Against Property (LAP)</option>
+                                <option value="Working Capital Loan">Working Capital & MSME Loan</option>
+                                <option value="Mortgage Loan">Mortgage Loan</option>
+                                <option value="Car / Vehicle Loan">Car / Vehicle Loan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label font-weight-bold">Required Loan Amount *</label>
+                            <select class="form-select" id="hwAmount" required>
+                                <option value="₹5 Lakhs - ₹25 Lakhs">₹5 Lakhs - ₹25 Lakhs</option>
+                                <option value="₹25 Lakhs - ₹50 Lakhs">₹25 Lakhs - ₹50 Lakhs</option>
+                                <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
+                                <option value="₹1 Crore+">₹1 Crore+</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn-default w-100 py-3 font-weight-bold fs-6">Get Instant Callback & Lowest Rate Offer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Home Page Auto Popup Script -->
+<script>
+$(document).ready(function() {
+    // Automatically pop up home welcome modal when user opens the home page
+    setTimeout(function() {
+        var modalEl = document.getElementById('homeAutoWelcomeModal');
+        if (modalEl && typeof bootstrap !== 'undefined') {
+            var welcomeModal = new bootstrap.Modal(modalEl);
+            welcomeModal.show();
+        }
+    }, 1400);
+});
+
+function handleHomeWelcomeSubmit(e) {
+    e.preventDefault();
+    var name = $('#hwName').val();
+    var phone = $('#hwPhone').val();
+    var loan = $('#hwLoanType').val();
+    alert('Thank you ' + name + '! Your enquiry for ' + loan + ' has been submitted.\n\nOur Senior Financial Consultant will contact you at ' + phone + ' within 15 minutes.');
+    var modalEl = document.getElementById('homeAutoWelcomeModal');
+    if (modalEl) {
+        var modal = bootstrap.Modal.getInstance(modalEl);
+        if (modal) modal.hide();
+    }
+    $('#homeWelcomeForm')[0].reset();
+}
+</script>
+<!-- Automatic Home Page Welcome Popup Modal End -->
+
 </body>
 </html>
