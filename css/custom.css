@@ -8890,10 +8890,6 @@ body.page-contact .btn-default,
 }
 
 
-/* ==========================================================================
-   MOBILE THEME TOGGLE BUTTON STYLING
-   ========================================================================== */
-
 @media (max-width: 991px) {
     .themeToggleBtnTrigger {
         width: 38px !important;
@@ -8901,3 +8897,41 @@ body.page-contact .btn-default,
         font-size: 14px !important;
     }
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVE MODALS & POPUPS FIX
+   ========================================================================== */
+
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 0.5rem !important;
+    }
+
+    .modal-content {
+        border-radius: 16px !important;
+    }
+
+    .modal-header {
+        padding: 1rem 1.25rem !important;
+    }
+
+    .modal-header h3,
+    .modal-header h4 {
+        font-size: 1.2rem !important;
+    }
+
+    .modal-body {
+        padding: 1.25rem 1rem !important;
+    }
+
+    .modal-body input,
+    .modal-body select {
+        font-size: 16px !important; /* Prevents auto-zoom on iOS browsers */
+    }
+
+    .modal-body .btn-default {
+        padding: 12px 16px !important;
+        font-size: 15px !important;
+    }
+}
+
