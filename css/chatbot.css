@@ -47,6 +47,10 @@
     box-shadow: 0 12px 30px rgba(0, 230, 118, 0.4), 0 8px 20px rgba(0,0,0,0.5);
 }
 
+.dhallo-chat-toggle * {
+    pointer-events: none !important;
+}
+
 .dhallo-chat-toggle i {
     font-size: 24px;
     transition: transform 0.3s ease;
@@ -615,22 +619,221 @@ html.light-mode #dhallo-chatbot-wrapper,
 body.light-mode #dhallo-chatbot-wrapper {
     --chat-bg: #FFFFFF;
     --chat-site-bg: #F4F8F6;
-    --chat-elevated: #E8F5E9;
+    --chat-elevated: #F0FDF4;
     --chat-border: #C8E6C9;
     --chat-text: #0E543B;
     --chat-text-muted: #4A6B5D;
 }
 
+/* Chat Window Container in Light Mode */
+html.light-mode .dhallo-chat-window,
+body.light-mode .dhallo-chat-window {
+    background: #FFFFFF !important;
+    border-color: #C8E6C9 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 20px rgba(14, 84, 59, 0.1) !important;
+}
+
+/* Chat Header Text & Buttons in Light Mode (Ensure Crisp Contrast on Dark Green Header) */
+html.light-mode .dhallo-chat-header,
+body.light-mode .dhallo-chat-header {
+    background: linear-gradient(135deg, #041C12 0%, #0E543B 100%) !important;
+    border-bottom: 1px solid #153C2D !important;
+}
+
+html.light-mode .dhallo-chat-header .dhallo-bot-title-area h5,
+body.light-mode .dhallo-chat-header .dhallo-bot-title-area h5,
+.dhallo-chat-header .dhallo-bot-title-area h5 {
+    color: #FFFFFF !important;
+}
+
+html.light-mode .dhallo-chat-header .dhallo-bot-title-area p,
+body.light-mode .dhallo-chat-header .dhallo-bot-title-area p,
+.dhallo-chat-header .dhallo-bot-title-area p {
+    color: #00E676 !important;
+}
+
+html.light-mode .dhallo-chat-header .dhallo-header-btn,
+body.light-mode .dhallo-chat-header .dhallo-header-btn,
+.dhallo-chat-header .dhallo-header-btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #FFFFFF !important;
+}
+
+html.light-mode .dhallo-chat-header .dhallo-header-btn i,
+body.light-mode .dhallo-chat-header .dhallo-header-btn i,
+.dhallo-chat-header .dhallo-header-btn i {
+    color: #FFFFFF !important;
+}
+
+html.light-mode .dhallo-chat-header .dhallo-header-btn:hover,
+body.light-mode .dhallo-chat-header .dhallo-header-btn:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #00E676 !important;
+}
+
+/* Chat Body in Light Mode */
+html.light-mode .dhallo-chat-body,
+body.light-mode .dhallo-chat-body {
+    background: #F4F8F6 !important;
+}
+
+/* Bot Messages in Light Mode */
 html.light-mode .bot-msg .dhallo-msg-bubble,
 body.light-mode .bot-msg .dhallo-msg-bubble {
-    background: #EAF4EE;
-    color: #082E20;
-    border-color: #C1E1D1;
+    background: #FFFFFF !important;
+    color: #0B291D !important;
+    border: 1px solid #D0E6DB !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+html.light-mode .bot-msg .dhallo-msg-bubble *,
+body.light-mode .bot-msg .dhallo-msg-bubble * {
+    color: #0B291D;
+}
+
+html.light-mode .bot-msg .dhallo-msg-bubble strong,
+body.light-mode .bot-msg .dhallo-msg-bubble strong {
+    color: #0E543B !important;
+}
+
+/* Action Chips inside Bot Messages in Light Mode */
+html.light-mode .dhallo-chip-btn,
+body.light-mode .dhallo-chip-btn {
+    background: #E8F5E9 !important;
+    border: 1.5px solid #0E543B !important;
+    color: #064E3B !important;
+    font-weight: 600 !important;
+}
+
+html.light-mode .dhallo-chip-btn:hover,
+body.light-mode .dhallo-chip-btn:hover {
+    background: #0E543B !important;
+    color: #FFFFFF !important;
+    border-color: #0E543B !important;
+}
+
+html.light-mode .dhallo-chip-btn.highlight,
+body.light-mode .dhallo-chip-btn.highlight {
+    background: #FFF8E1 !important;
+    border-color: #D1A657 !important;
+    color: #784E00 !important;
+    font-weight: 700 !important;
+}
+
+html.light-mode .dhallo-chip-btn.highlight:hover,
+body.light-mode .dhallo-chip-btn.highlight:hover {
+    background: #D1A657 !important;
+    color: #FFFFFF !important;
+}
+
+/* Message Time & Branding in Light Mode */
+html.light-mode .dhallo-msg-time,
+body.light-mode .dhallo-msg-time {
+    color: #557267 !important;
+}
+
+html.light-mode .dhallo-chat-branding,
+body.light-mode .dhallo-chat-branding {
+    color: #557267 !important;
+}
+
+/* Chat Footer & Input in Light Mode */
+html.light-mode .dhallo-chat-footer,
+body.light-mode .dhallo-chat-footer {
+    background: #FFFFFF !important;
+    border-top: 1px solid #D0E6DB !important;
 }
 
 html.light-mode .dhallo-chat-input-form input,
 body.light-mode .dhallo-chat-input-form input {
-    background: #FFFFFF;
-    color: #0E543B;
-    border-color: #C8E6C9;
+    background: #F4F8F6 !important;
+    color: #0B291D !important;
+    border: 1px solid #C8E6C9 !important;
 }
+
+html.light-mode .dhallo-chat-input-form input::placeholder,
+body.light-mode .dhallo-chat-input-form input::placeholder {
+    color: #6B7280 !important;
+}
+
+html.light-mode .dhallo-chat-input-form input:focus,
+body.light-mode .dhallo-chat-input-form input:focus {
+    border-color: #0E543B !important;
+    background: #FFFFFF !important;
+}
+
+/* Proactive Tooltip in Light Mode */
+html.light-mode .dhallo-chat-tooltip,
+body.light-mode .dhallo-chat-tooltip {
+    background: #FFFFFF !important;
+    border: 1px solid #0E543B !important;
+    color: #0B291D !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+html.light-mode .dhallo-chat-tooltip strong,
+body.light-mode .dhallo-chat-tooltip strong {
+    color: #0E543B !important;
+}
+
+html.light-mode .dhallo-tooltip-close,
+body.light-mode .dhallo-tooltip-close {
+    color: #557267 !important;
+}
+
+/* Floating Toggle Button & Chatbot Button Icons in Light Mode */
+html.light-mode .dhallo-chat-toggle,
+body.light-mode .dhallo-chat-toggle,
+.dhallo-chat-toggle {
+    background: linear-gradient(135deg, #0E543B 0%, #041C12 100%) !important;
+    border: 2px solid #00E676 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.35), 0 5px 15px rgba(0,0,0,0.4) !important;
+}
+
+html.light-mode .dhallo-chat-toggle i,
+body.light-mode .dhallo-chat-toggle i,
+html.light-mode .dhallo-chat-toggle .fa-solid,
+body.light-mode .dhallo-chat-toggle .fa-solid,
+html.light-mode .dhallo-chat-toggle i.fa-comments,
+body.light-mode .dhallo-chat-toggle i.fa-comments,
+html.light-mode .dhallo-chat-toggle i.fa-xmark,
+body.light-mode .dhallo-chat-toggle i.fa-xmark {
+    color: #FFFFFF !important;
+    font-size: 24px !important;
+}
+
+html.light-mode .dhallo-chat-toggle:hover,
+body.light-mode .dhallo-chat-toggle:hover {
+    background: linear-gradient(135deg, #00E676 0%, #0E543B 100%) !important;
+    box-shadow: 0 12px 30px rgba(0, 230, 118, 0.5), 0 8px 20px rgba(0,0,0,0.5) !important;
+}
+
+html.light-mode .dhallo-chat-toggle:hover i,
+body.light-mode .dhallo-chat-toggle:hover i,
+html.light-mode .dhallo-chat-toggle:hover .fa-solid,
+body.light-mode .dhallo-chat-toggle:hover .fa-solid {
+    color: #FFFFFF !important;
+}
+
+html.light-mode .dhallo-send-btn,
+body.light-mode .dhallo-send-btn {
+    background: linear-gradient(135deg, #0E543B 0%, #00E676 100%) !important;
+    color: #FFFFFF !important;
+}
+
+html.light-mode .dhallo-send-btn i,
+body.light-mode .dhallo-send-btn i,
+html.light-mode .dhallo-send-btn .fa-solid,
+body.light-mode .dhallo-send-btn .fa-solid {
+    color: #FFFFFF !important;
+}
+
+html.light-mode .dhallo-unread-badge,
+body.light-mode .dhallo-unread-badge {
+    background: #EF4444 !important;
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+}
+
+

@@ -135,7 +135,7 @@
     }
 
     // Append Bot Message
-    function appendBotMessage(htmlContent, chips = []) {
+    function appendBotMessage(htmlContent, chips = [], playSound = true) {
         const time = getTimestamp();
         let chipsHTML = '';
 
@@ -160,7 +160,9 @@
 
         $('#dhallo-chat-body').append(msgHTML);
         scrollToBottom();
-        playChimeSound();
+        if (playSound) {
+            playChimeSound();
+        }
     }
 
     // Show Typing Indicator
@@ -189,7 +191,7 @@
     }
 
     // Default Initial Welcome Message
-    function showWelcomeMessage() {
+    function showWelcomeMessage(playSound = false) {
         $('#dhallo-chat-body').empty();
         const welcomeHTML = `
             👋 <strong>Welcome to Dhallo Corporate Financial Services!</strong><br>
@@ -207,7 +209,7 @@
             { label: '📞 Contact Senior Advisor', action: 'contact_advisor' }
         ];
 
-        appendBotMessage(welcomeHTML, welcomeChips);
+        appendBotMessage(welcomeHTML, welcomeChips, playSound);
     }
 
     // Bot Response Logic Engine
@@ -317,8 +319,8 @@
                 const response = `
                     📞 <strong>Dhallo Corporate Financial Services:</strong><br>
                     📍 <strong>Office Address:</strong> Plot No. 12, Corporate Towers, Financial District, Gachibowli / Madhapur, Hyderabad, Telangana 500032.<br>
-                    ☎️ <strong>Direct Phone:</strong> +91 96663 95995<br>
-                    ✉️ <strong>Email:</strong> dhallofinancialservices@gmail.com<br>
+                    ☎️ <strong>Direct Phone:</strong> +91 96663 95995 / +91 98492 55486<br>
+                    ✉️ <strong>Email:</strong> info@dhallo.com<br>
                     🕒 <strong>Working Hours:</strong> Mon - Sat: 9:30 AM - 7:00 PM
                 `;
                 const chips = [
@@ -364,7 +366,7 @@
         }
 
         if (action === 'welcome') {
-            showWelcomeMessage();
+            showWelcomeMessage(true);
             return;
         }
 
@@ -373,13 +375,35 @@
         processUserMessage(chipText);
     });
 
+    // Helper toggle function
+    function toggleChatWindow(e) {
+        if (e && e.cancelable) {
+            e.preventDefault();
+        }
+        const windowEl = $('#dhallo-chat-window');
+        const toggleBtn = $('#dhallo-chat-toggle-btn');
+        const isOpening = !windowEl.hasClass('open');
+
+        windowEl.toggleClass('open');
+        toggleBtn.toggleClass('active');
+        $('#dhallo-chat-tooltip').fadeOut(200);
+        $('#dhallo-unread-badge').hide();
+
+        if (isOpening) {
+            scrollToBottom();
+            setTimeout(() => $('#dhallo-chat-input').focus(), 200);
+        }
+    }
+
+    let lastToggleTimestamp = 0;
+
     // DOM Ready Initialization
     $(document).ready(function() {
         // 1. Inject Chatbot DOM Structure
         injectChatbotHTML();
 
-        // 2. Load Initial Welcome Message
-        showWelcomeMessage();
+        // 2. Load Initial Welcome Message silently (prevents AudioContext block before gesture)
+        showWelcomeMessage(false);
 
         // 3. Proactive Greeting Tooltip Timer (Appears after 3s)
         setTimeout(() => {
@@ -388,43 +412,40 @@
             }
         }, 3000);
 
-        // Tooltip Click Handler
-        $(document).on('click', '#dhallo-chat-tooltip', function(e) {
+        // Tooltip Click / Tap Handler (Instant First Click Response)
+        $(document).on('click touchend', '#dhallo-chat-tooltip', function(e) {
             if ($(e.target).closest('#dhallo-tooltip-close').length) {
+                if (e.cancelable) e.preventDefault();
                 e.stopPropagation();
                 $('#dhallo-chat-tooltip').fadeOut(200);
                 return;
             }
-            $('#dhallo-chat-tooltip').fadeOut(200);
-            $('#dhallo-chat-window').addClass('open');
-            $('#dhallo-chat-toggle-btn').addClass('active');
-            $('#dhallo-unread-badge').hide();
+            const now = Date.now();
+            if (now - lastToggleTimestamp < 300) return;
+            lastToggleTimestamp = now;
+            toggleChatWindow(e);
         });
 
-        // Toggle Chat Window
-        $(document).on('click', '#dhallo-chat-toggle-btn', function() {
-            const windowEl = $('#dhallo-chat-window');
-            const isOpening = !windowEl.hasClass('open');
-
-            windowEl.toggleClass('open');
-            $(this).toggleClass('active');
-            $('#dhallo-chat-tooltip').fadeOut(200);
-            $('#dhallo-unread-badge').hide();
-
-            if (isOpening) {
-                scrollToBottom();
-                setTimeout(() => $('#dhallo-chat-input').focus(), 300);
-            }
+        // Toggle Chat Window Button (Instant First Click & Mobile Tap Response)
+        $(document).on('click touchend', '#dhallo-chat-toggle-btn', function(e) {
+            const now = Date.now();
+            if (now - lastToggleTimestamp < 300) return;
+            lastToggleTimestamp = now;
+            toggleChatWindow(e);
         });
 
         // Close Chat Button
-        $(document).on('click', '#dhallo-close-chat', function() {
+        $(document).on('click touchend', '#dhallo-close-chat', function(e) {
+            if (e.cancelable) e.preventDefault();
             $('#dhallo-chat-window').removeClass('open');
             $('#dhallo-chat-toggle-btn').removeClass('active');
         });
 
         // Sound Toggle
-        $(document).on('click', '#dhallo-sound-toggle', function() {
+        $(document).on('click touchend', '#dhallo-sound-toggle', function(e) {
+            const now = Date.now();
+            if (now - lastToggleTimestamp < 200) return;
+            lastToggleTimestamp = now;
             soundEnabled = !soundEnabled;
             const icon = $(this).find('i');
             if (soundEnabled) {
@@ -438,8 +459,11 @@
         });
 
         // Clear Chat
-        $(document).on('click', '#dhallo-clear-chat', function() {
-            showWelcomeMessage();
+        $(document).on('click touchend', '#dhallo-clear-chat', function(e) {
+            const now = Date.now();
+            if (now - lastToggleTimestamp < 200) return;
+            lastToggleTimestamp = now;
+            showWelcomeMessage(true);
         });
 
         // Chat Form Submit

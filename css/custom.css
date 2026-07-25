@@ -7747,22 +7747,145 @@ body.light-mode .breadcrumb-item.active {
     font-weight: 700 !important;
 }
 
-/* Icons in Light Mode */
-body.light-mode .fa-solid,
-body.light-mode .fa-brands,
-body.light-mode .fa-regular {
-    color: #0E543B !important;
+/* Context-Aware Light Mode Icon Contrast System */
+
+/* 1. Default icons on Light Cards & Backgrounds inherit legibility */
+body.light-mode .card i,
+body.light-mode .bg-white i,
+body.light-mode .bg-light i,
+body.light-mode .p-3 i,
+body.light-mode .p-4 i,
+body.light-mode .p-5 i,
+body.light-mode .about-company-item i,
+body.light-mode .project-item i,
+body.light-mode .partner-card i,
+body.light-mode .testimonial-item i,
+body.light-mode .approach-item i,
+body.light-mode .quick-contact-cards i {
+    color: #0E543B;
 }
 
-body.light-mode .text-warning i,
+/* 2. Color Helper Classes for Icons in Light Mode */
+body.light-mode .text-gold,
+body.light-mode .text-gold i,
+body.light-mode i.text-gold,
 body.light-mode .fa-star,
 body.light-mode .fa-sun {
     color: #D1A657 !important;
 }
 
+body.light-mode .text-warning,
+body.light-mode .text-warning i,
+body.light-mode i.text-warning,
+body.light-mode .fa-bolt {
+    color: #D1A657 !important;
+}
+
+body.light-mode .text-success,
+body.light-mode .text-success i,
+body.light-mode i.text-success,
+body.light-mode .fa-whatsapp,
 body.light-mode .fa-circle-check,
-body.light-mode .text-success {
-    color: #00A859 !important;
+body.light-mode .fa-percent {
+    color: #00E676 !important;
+}
+
+body.light-mode .text-primary,
+body.light-mode .text-primary i,
+body.light-mode i.text-primary,
+body.light-mode .fa-phone-volume,
+body.light-mode .fa-envelope-open-text,
+body.light-mode .fa-building-user,
+body.light-mode .fa-clock {
+    color: #0E543B !important;
+}
+
+body.light-mode .text-info,
+body.light-mode .text-info i,
+body.light-mode i.text-info,
+body.light-mode .fa-building-columns {
+    color: #00B0FF !important;
+}
+
+body.light-mode .text-white,
+body.light-mode .text-white i,
+body.light-mode i.text-white {
+    color: #FFFFFF !important;
+}
+
+/* 3. Dark Containers in Light Mode (Topbar, Footer, Hero, Banner, Modals) */
+body.light-mode .topbar,
+body.light-mode .topbar a,
+body.light-mode .topbar p,
+body.light-mode .topbar span {
+    color: #FFFFFF !important;
+}
+
+body.light-mode .topbar i,
+body.light-mode .topbar .text-gold,
+body.light-mode .topbar .text-gold i {
+    color: #D1A657 !important;
+}
+
+body.light-mode .main-footer {
+    background-color: #041C12 !important;
+}
+
+body.light-mode .main-footer h3,
+body.light-mode .main-footer h4,
+body.light-mode .main-footer h5 {
+    color: #D1A657 !important;
+}
+
+body.light-mode .main-footer p,
+body.light-mode .main-footer a,
+body.light-mode .main-footer li {
+    color: var(--secondary-text, #8FA79D) !important;
+}
+
+body.light-mode .main-footer i,
+body.light-mode .main-footer .fa-solid,
+body.light-mode .main-footer .fa-brands,
+body.light-mode .main-footer .fa-regular {
+    color: #00E676 !important;
+}
+
+body.light-mode .hero i,
+body.light-mode .hero-slide i {
+    color: #FFFFFF !important;
+}
+
+/* 4. Icon Boxes in Light Mode */
+body.light-mode .icon-box {
+    background-color: #EBF2EE !important;
+    border: 1px solid #C4D4CC !important;
+}
+
+body.light-mode .icon-box i {
+    color: inherit;
+}
+
+body.light-mode .icon-box.text-success i,
+body.light-mode .icon-box .fa-percent {
+    color: #00E676 !important;
+}
+
+body.light-mode .icon-box.text-warning i,
+body.light-mode .icon-box .fa-bolt {
+    color: #D1A657 !important;
+}
+
+body.light-mode .icon-box.text-info i,
+body.light-mode .icon-box .fa-building-columns {
+    color: #00B0FF !important;
+}
+
+/* 5. Chatbot Widget & Modal Close Icons Protection */
+body.light-mode #dhallo-chatbot-wrapper .dhallo-chat-toggle i,
+body.light-mode #dhallo-chatbot-wrapper .dhallo-chat-header .dhallo-header-btn i,
+body.light-mode #dhallo-chatbot-wrapper .dhallo-send-btn i,
+body.light-mode .custom-modal-close::after {
+    color: #FFFFFF !important;
 }
 
 /* Cards & Elevated Containers in Light Mode */
@@ -8026,26 +8149,12 @@ body.light-mode #loanApplyModal .modal-title {
 
 
 /* ==========================================================================
-   THEME-DEPENDENT LOGO SWITCHING (Dark: logo.png | Light: logo_a.gif)
+   ANIMATED LOGO (logo_a.gif) FOR BOTH DARK AND LIGHT MODE
    ========================================================================== */
 
+/* Hide static logo in all theme modes */
 .navbar-brand .logo-dark,
-.footer-logo .logo-dark {
-    display: inline-block !important;
-    max-height: 55px !important;
-    width: auto !important;
-    object-fit: contain !important;
-}
-
-.navbar-brand .logo-light,
-.footer-logo .logo-light {
-    display: none !important;
-    max-height: 55px !important;
-    width: auto !important;
-    object-fit: contain !important;
-}
-
-/* Light mode overrides */
+.footer-logo .logo-dark,
 html.light-mode .navbar-brand .logo-dark,
 html.light-mode .footer-logo .logo-dark,
 body.light-mode .navbar-brand .logo-dark,
@@ -8053,11 +8162,23 @@ body.light-mode .footer-logo .logo-dark {
     display: none !important;
 }
 
+/* Always display animated logo (logo_a.gif) in both Dark and Light Mode */
+.navbar-brand .logo-light,
+.footer-logo .logo-light,
 html.light-mode .navbar-brand .logo-light,
 html.light-mode .footer-logo .logo-light,
 body.light-mode .navbar-brand .logo-light,
 body.light-mode .footer-logo .logo-light {
     display: inline-block !important;
+    max-height: 55px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    transition: transform 0.3s ease !important;
+}
+
+.navbar-brand:hover .logo-light,
+.footer-logo:hover .logo-light {
+    transform: scale(1.04) !important;
 }
 
 
@@ -8945,17 +9066,63 @@ body.page-contact .btn-default,
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 100;
-    opacity: 0.85;
-    background-color: rgba(0, 0, 0, 0.4) !important;
+    z-index: 99999 !important;
+    width: 36px !important;
+    height: 36px !important;
+    opacity: 0.95 !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    background-image: none !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
     border-radius: 50% !important;
-    padding: 10px !important;
-    transition: all 0.2s ease;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.custom-modal-close::after {
+    content: "✕" !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    line-height: 1 !important;
+    display: block !important;
 }
 
 .custom-modal-close:hover {
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 1 !important;
+    background-color: #EF4444 !important;
+    border-color: #EF4444 !important;
+    color: #FFFFFF !important;
+    transform: scale(1.1) rotate(90deg) !important;
+}
+
+.custom-modal-close:hover::after {
+    color: #FFFFFF !important;
+}
+
+/* Guarantee visibility in Light Mode */
+body.light-mode .custom-modal-close,
+html.light-mode .custom-modal-close {
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+    color: #FFFFFF !important;
+}
+
+body.light-mode .custom-modal-close::after,
+html.light-mode .custom-modal-close::after {
+    color: #FFFFFF !important;
+}
+
+body.light-mode .custom-modal-close:hover,
+html.light-mode .custom-modal-close:hover {
+    background-color: #EF4444 !important;
+    border-color: #EF4444 !important;
 }
 
 .extra-small {
@@ -9011,6 +9178,350 @@ body.light-mode .modal-body .input-group-text {
         padding: 28px 22px !important;
     }
 }
+
+/* ==========================================================================
+   LIGHT MODE CRITICAL TEXT CONTRAST & MODAL VISIBILITY FIX
+   ========================================================================== */
+
+/* 1. Preserve explicit text-white and text-white-50 utility classes in Light Mode */
+body.light-mode .text-white,
+body.light-mode .text-white *,
+body.light-mode h1.text-white,
+body.light-mode h2.text-white,
+body.light-mode h3.text-white,
+body.light-mode h4.text-white,
+body.light-mode h5.text-white,
+body.light-mode h6.text-white,
+body.light-mode p.text-white,
+body.light-mode span.text-white,
+body.light-mode div.text-white,
+body.light-mode small.text-white {
+    color: #FFFFFF !important;
+}
+
+body.light-mode .text-white-50,
+body.light-mode .text-white-50 *,
+body.light-mode p.text-white-50,
+body.light-mode span.text-white-50,
+body.light-mode div.text-white-50,
+body.light-mode small.text-white-50 {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* 2. Welcome Auto Modal (#homeAutoWelcomeModal) Light Mode Fix */
+body.light-mode #homeAutoWelcomeModal .modal-content,
+html.light-mode #homeAutoWelcomeModal .modal-content {
+    background-color: #FFFFFF !important;
+    border: 1px solid #D3E0D9 !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Left Hero Banner Column (Dark Green Gradient Container) */
+body.light-mode #homeAutoWelcomeModal .col-lg-5,
+html.light-mode #homeAutoWelcomeModal .col-lg-5 {
+    background: linear-gradient(135deg, #041C12 0%, #0E543B 70%, #00E676 150%) !important;
+    color: #FFFFFF !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-5 h1,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 h2,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 h3,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 h4,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 h5,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 h6,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 strong {
+    color: #FFFFFF !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-5 p,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 span,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 div,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 small {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .text-white-50,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .extra-small {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Circular Icon Badges in Welcome Auto Modal Hero Column */
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box,
+html.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box,
+body.light-mode #loanApplyModal .icon-box,
+html.light-mode #loanApplyModal .icon-box {
+    background-color: #042417 !important;
+    border: 1.5px solid rgba(0, 230, 118, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box.text-success i,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box i.fa-percent,
+html.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box.text-success i {
+    color: #00E676 !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box.text-warning i,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box i.fa-bolt,
+html.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box.text-warning i {
+    color: #FFD700 !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box.text-info i,
+body.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box i.fa-building-columns,
+html.light-mode #homeAutoWelcomeModal .col-lg-5 .icon-box.text-info i {
+    color: #00E5FF !important;
+}
+
+/* Protect all dark section circular icon badges in Light Mode */
+body.light-mode .icon-box.bg-dark,
+html.light-mode .icon-box.bg-dark,
+body.light-mode .icon-box.rounded-circle,
+html.light-mode .icon-box.rounded-circle {
+    background-color: #042417 !important;
+    border: 1.5px solid rgba(0, 230, 118, 0.4) !important;
+}
+
+body.light-mode .icon-box.bg-dark .fa-percent,
+body.light-mode .icon-box.rounded-circle .fa-percent,
+body.light-mode .icon-box.text-success.rounded-circle i {
+    color: #00E676 !important;
+}
+
+body.light-mode .icon-box.bg-dark .fa-bolt,
+body.light-mode .icon-box.rounded-circle .fa-bolt,
+body.light-mode .icon-box.text-warning.rounded-circle i {
+    color: #FFD700 !important;
+}
+
+body.light-mode .icon-box.bg-dark .fa-building-columns,
+body.light-mode .icon-box.rounded-circle .fa-building-columns,
+body.light-mode .icon-box.text-info.rounded-circle i {
+    color: #00E5FF !important;
+}
+
+/* Right Form Column in Light Mode */
+body.light-mode #homeAutoWelcomeModal .col-lg-7,
+html.light-mode #homeAutoWelcomeModal .col-lg-7 {
+    background: #FFFFFF !important;
+    color: #0B291D !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-7 h3,
+body.light-mode #homeAutoWelcomeModal .col-lg-7 h4,
+body.light-mode #homeAutoWelcomeModal .col-lg-7 h5,
+body.light-mode #homeAutoWelcomeModal .col-lg-7 label {
+    color: #0B291D !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-7 p,
+body.light-mode #homeAutoWelcomeModal .col-lg-7 .text-muted {
+    color: #4A6358 !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-7 .form-control,
+body.light-mode #homeAutoWelcomeModal .col-lg-7 .form-select {
+    background-color: #F4F8F6 !important;
+    border: 1px solid #C4D4CC !important;
+    color: #0B291D !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-7 .input-group-text {
+    background-color: #EBF2EE !important;
+    border: 1px solid #C4D4CC !important;
+    color: #0E543B !important;
+}
+
+body.light-mode #homeAutoWelcomeModal .col-lg-7 .input-group-text i {
+    color: #0E543B !important;
+}
+
+/* 3. General Loan Application Modal (#loanApplyModal) Light Mode Fix */
+body.light-mode #loanApplyModal .modal-content,
+html.light-mode #loanApplyModal .modal-content {
+    background-color: #FFFFFF !important;
+    border: 1px solid #D3E0D9 !important;
+    color: #0B291D !important;
+}
+
+body.light-mode #loanApplyModal .modal-header {
+    background: linear-gradient(135deg, #041C12 0%, #0E543B 100%) !important;
+    border-bottom: 1px solid #153C2D !important;
+}
+
+body.light-mode #loanApplyModal .modal-header .modal-title,
+body.light-mode #loanApplyModal .modal-header h5,
+body.light-mode #loanApplyModal .modal-header p {
+    color: #FFFFFF !important;
+}
+
+body.light-mode #loanApplyModal .modal-body {
+    background-color: #FFFFFF !important;
+    color: #0B291D !important;
+}
+
+body.light-mode #loanApplyModal .modal-body label,
+body.light-mode #loanApplyModal .modal-body h4,
+body.light-mode #loanApplyModal .modal-body h5,
+body.light-mode #loanApplyModal .modal-body h6,
+body.light-mode #loanApplyModal .modal-body strong {
+    color: #0B291D !important;
+}
+
+body.light-mode #loanApplyModal .modal-body p,
+body.light-mode #loanApplyModal .modal-body .text-muted {
+    color: #4A6358 !important;
+}
+
+body.light-mode #loanApplyModal .modal-body .form-control,
+body.light-mode #loanApplyModal .modal-body .form-select {
+    background-color: #F4F8F6 !important;
+    border: 1px solid #C4D4CC !important;
+    color: #0B291D !important;
+}
+
+body.light-mode #loanApplyModal .modal-body .input-group-text {
+    background-color: #EBF2EE !important;
+    border: 1px solid #C4D4CC !important;
+    color: #0E543B !important;
+}
+
+body.light-mode #loanApplyModal .modal-body .input-group-text i {
+    color: #0E543B !important;
+}
+
+/* ==========================================================================
+   LIGHT MODE BUTTONS & HOVER CONTRAST FIX
+   ========================================================================== */
+
+/* Header Call Button in Light Mode */
+body.light-mode .btn-header-call,
+html.light-mode .btn-header-call {
+    background: #EAF4EE !important;
+    border: 1.5px solid #0E543B !important;
+    color: #0E543B !important;
+}
+
+body.light-mode .btn-header-call i,
+body.light-mode .btn-header-call svg,
+body.light-mode .btn-header-call .fa-solid,
+html.light-mode .btn-header-call i {
+    color: #0E543B !important;
+}
+
+/* Header Call Button Hover State in Light Mode */
+body.light-mode .btn-header-call:hover,
+html.light-mode .btn-header-call:hover {
+    background: #0E543B !important;
+    border-color: #0E543B !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(14, 84, 59, 0.3) !important;
+}
+
+body.light-mode .btn-header-call:hover i,
+body.light-mode .btn-header-call:hover svg,
+body.light-mode .btn-header-call:hover .fa-solid,
+html.light-mode .btn-header-call:hover i {
+    color: #FFFFFF !important;
+}
+
+/* Theme Toggle Button in Light Mode */
+body.light-mode .theme-toggle-btn,
+html.light-mode .theme-toggle-btn {
+    background: #EBF2EE !important;
+    border: 1.5px solid #0E543B !important;
+    color: #0E543B !important;
+}
+
+body.light-mode .theme-toggle-btn i,
+body.light-mode .theme-toggle-btn .fa-solid,
+body.light-mode .theme-toggle-btn .fa-sun,
+html.light-mode .theme-toggle-btn i {
+    color: #0E543B !important;
+}
+
+body.light-mode .theme-toggle-btn:hover,
+html.light-mode .theme-toggle-btn:hover {
+    background: #0E543B !important;
+    border-color: #0E543B !important;
+    color: #FFFFFF !important;
+}
+
+body.light-mode .theme-toggle-btn:hover i,
+body.light-mode .theme-toggle-btn:hover .fa-solid,
+body.light-mode .theme-toggle-btn:hover .fa-sun,
+html.light-mode .theme-toggle-btn:hover i {
+    color: #FFFFFF !important;
+}
+
+/* Login / General Buttons in Light Mode */
+body.light-mode .btn-login,
+html.light-mode .btn-login {
+    background: #EBF2EE !important;
+    border: 1px solid #C4D4CC !important;
+    color: #0E543B !important;
+}
+
+body.light-mode .btn-login:hover,
+html.light-mode .btn-login:hover {
+    background: #0E543B !important;
+    color: #FFFFFF !important;
+}
+
+body.light-mode .btn-login:hover i,
+html.light-mode .btn-login:hover i {
+    color: #FFFFFF !important;
+}
+
+/* Primary, Default, Success & Gold Action Buttons */
+body.light-mode .btn-primary,
+body.light-mode .btn-success,
+body.light-mode .btn-default,
+body.light-mode .btn-gold,
+html.light-mode .btn-primary,
+html.light-mode .btn-success,
+html.light-mode .btn-default,
+html.light-mode .btn-gold {
+    background-color: #0E543B !important;
+    border-color: #0E543B !important;
+    color: #FFFFFF !important;
+}
+
+body.light-mode .btn-primary i,
+body.light-mode .btn-success i,
+body.light-mode .btn-default i,
+body.light-mode .btn-gold i,
+html.light-mode .btn-primary i,
+html.light-mode .btn-success i,
+html.light-mode .btn-default i,
+html.light-mode .btn-gold i {
+    color: #FFFFFF !important;
+}
+
+body.light-mode .btn-primary:hover,
+body.light-mode .btn-success:hover,
+body.light-mode .btn-default:hover,
+body.light-mode .btn-gold:hover,
+html.light-mode .btn-primary:hover,
+html.light-mode .btn-success:hover,
+html.light-mode .btn-default:hover,
+html.light-mode .btn-gold:hover {
+    background-color: #00E676 !important;
+    border-color: #00E676 !important;
+    color: #041C12 !important;
+}
+
+body.light-mode .btn-primary:hover i,
+body.light-mode .btn-success:hover i,
+body.light-mode .btn-default:hover i,
+body.light-mode .btn-gold:hover i,
+html.light-mode .btn-primary:hover i,
+html.light-mode .btn-success:hover i,
+html.light-mode .btn-default:hover i,
+html.light-mode .btn-gold:hover i {
+    color: #041C12 !important;
+}
+
 
 
 
