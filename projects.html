@@ -811,79 +811,156 @@
 
 <!-- Loan Application Popup Modal Start -->
 <div class="modal fade" id="loanApplyModal" tabindex="-1" aria-labelledby="loanApplyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
-            <div class="modal-header text-white p-4" style="background: linear-gradient(135deg, #041C12 0%, #0E543B 100%); border-bottom: 1px solid var(--border-color);">
-                <div>
-                    <span class="badge bg-warning text-dark font-weight-bold mb-1" id="modalProductBadge">Instant Loan Application</span>
-                    <h4 class="modal-title font-weight-bold text-white mb-0" id="loanApplyModalLabel">Apply for Financial Assistance</h4>
-                </div>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-4 p-md-5" style="background-color: var(--card-bg);">
-                <p class="text-muted mb-4 small">Fill out the quick form below. Our Dhallo senior loan advisor will compare 150+ Banks & NBFCs to get you the lowest interest rate within 15 minutes.</p>
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 shadow-2xl position-relative" style="border-radius: 28px; overflow: hidden; background-color: var(--card-bg);">
+            <button type="button" class="btn-close btn-close-white custom-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <!-- Left Hero Card Column -->
+                    <div class="col-lg-5 p-4 p-md-5 d-flex flex-column justify-content-between text-white" style="background: linear-gradient(135deg, #041C12 0%, #0E543B 70%, #00E676 150%); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -50px; left: -50px; width: 220px; height: 220px; background: rgba(0,230,118,0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
+                        
+                        <div>
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <span class="badge bg-warning text-dark font-weight-bold px-3 py-2 fs-7 rounded-pill" id="modalProductBadge">Instant Loan Application</span>
+                            </div>
+                            <h2 class="font-weight-bold text-white mb-2" id="loanApplyModalLabel" style="line-height: 1.2;">Apply for Financial Assistance</h2>
+                            <p class="text-white-50 small mb-4">Dhallo senior loan advisors compare 150+ Banks & NBFCs to guarantee you the lowest interest rate within 15 minutes.</p>
 
-                <form id="popupLoanForm" onsubmit="handlePopupFormSubmit(event)">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label font-weight-bold">Full Name *</label>
-                            <input type="text" class="form-control" id="pName" placeholder="Enter your full name" required>
+                            <!-- Trust Features -->
+                            <div class="trust-features-list mb-4">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="icon-box text-success fs-5 bg-dark bg-opacity-50 p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px; border: 1px solid rgba(0,230,118,0.3); flex-shrink: 0;">
+                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-white mb-0 font-weight-bold small">Fast Approval & Sanction</h6>
+                                        <span class="text-white-50 extra-small">Instant digital application processing</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="icon-box text-warning fs-5 bg-dark bg-opacity-50 p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px; border: 1px solid rgba(209,166,87,0.3); flex-shrink: 0;">
+                                        <i class="fa-solid fa-hand-holding-hand"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-white mb-0 font-weight-bold small">Zero Doorstep Service Fee</h6>
+                                        <span class="text-white-50 extra-small">Dedicated loan manager assigned</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon-box text-info fs-5 bg-dark bg-opacity-50 p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px; border: 1px solid rgba(0,230,118,0.3); flex-shrink: 0;">
+                                        <i class="fa-solid fa-building-columns"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="text-white mb-0 font-weight-bold small">150+ Bank Partnerships</h6>
+                                        <span class="text-white-50 extra-small">SBI, HDFC, ICICI, Axis, Kotak & NBFCs</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label font-weight-bold">Mobile Number (WhatsApp) *</label>
-                            <input type="tel" class="form-control" id="pPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label font-weight-bold">Email Address *</label>
-                            <input type="email" class="form-control" id="pEmail" placeholder="name@domain.com" required>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label font-weight-bold">Select Loan Product *</label>
-                            <select class="form-select" id="pProduct" required>
-                                <option value="General Loan">General Loan Enquiry</option>
-                                <option value="Home Loan">Home Loan</option>
-                                <option value="Business Loan">Business Loan</option>
-                                <option value="Loan Against Property (LAP)">Loan Against Property (LAP)</option>
-                                <option value="Mortgage Loan">Mortgage Loan</option>
-                                <option value="Working Capital Loan">Working Capital Loan</option>
-                                <option value="Car Loan">Car Loan</option>
-                                <option value="Personal Loan">Personal Loan</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label font-weight-bold">Required Loan Amount *</label>
-                            <select class="form-select" id="pAmount" required>
-                                <option value="₹1 Lakh - ₹5 Lakhs">₹1 Lakh - ₹5 Lakhs</option>
-                                <option value="₹5 Lakhs - ₹25 Lakhs">₹5 Lakhs - ₹25 Lakhs</option>
-                                <option value="₹25 Lakhs - ₹50 Lakhs">₹25 Lakhs - ₹50 Lakhs</option>
-                                <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
-                                <option value="₹1 Crore+">₹1 Crore+</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label font-weight-bold">Employment Type *</label>
-                            <select class="form-select" id="pEmployment" required>
-                                <option value="Salaried Employee">Salaried Employee</option>
-                                <option value="Self-Employed Professional">Self-Employed Professional</option>
-                                <option value="Business Owner / MSME">Business Owner / MSME</option>
-                            </select>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label font-weight-bold">City / Location *</label>
-                            <input type="text" class="form-control" id="pCity" placeholder="e.g. Hyderabad, Telangana" required>
-                        </div>
-
-                        <div class="col-12 mt-4">
-                            <button type="submit" class="btn-default w-100 py-3 font-weight-bold fs-6">Submit Loan Application</button>
+                        <div class="pt-3 border-top border-secondary border-opacity-25 mt-3">
+                            <div class="d-flex align-items-center justify-content-between text-white-50 extra-small">
+                                <span><i class="fa-solid fa-shield-halved text-success me-1"></i> Bank-Grade Encryption</span>
+                                <span><i class="fa-solid fa-user-check text-warning me-1"></i> 10,000+ Happy Clients</span>
+                            </div>
                         </div>
                     </div>
-                </form>
+
+                    <!-- Right Form Column -->
+                    <div class="col-lg-7 p-4 p-md-5 d-flex flex-column justify-content-center" style="background: var(--card-bg);">
+                        <div class="mb-4">
+                            <h3 class="font-weight-bold text-white mb-1">Fill Your Application Details</h3>
+                            <p class="text-muted small">Provide your contact info below to receive personalized bank interest rate comparisons.</p>
+                        </div>
+
+                        <form id="popupLoanForm" onsubmit="handlePopupFormSubmit(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label font-weight-bold text-white small">Full Name *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                                        <input type="text" class="form-control" id="pName" placeholder="Enter your full name" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label font-weight-bold text-white small">Mobile Number (WhatsApp) *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                        <input type="tel" class="form-control" id="pPhone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label font-weight-bold text-white small">Email Address *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="pEmail" placeholder="name@domain.com" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label font-weight-bold text-white small">Select Loan Product *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                                        <select class="form-select" id="pProduct" required>
+                                            <option value="General Loan">General Loan Enquiry</option>
+                                            <option value="Home Loan">Home Loan</option>
+                                            <option value="Business Loan">Business Loan</option>
+                                            <option value="Loan Against Property (LAP)">Loan Against Property (LAP)</option>
+                                            <option value="Mortgage Loan">Mortgage Loan</option>
+                                            <option value="Working Capital Loan">Working Capital Loan</option>
+                                            <option value="Car Loan">Car Loan</option>
+                                            <option value="Personal Loan">Personal Loan</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label font-weight-bold text-white small">Required Loan Amount *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-indian-rupee-sign"></i></span>
+                                        <select class="form-select" id="pAmount" required>
+                                            <option value="₹1 Lakh - ₹5 Lakhs">₹1 Lakh - ₹5 Lakhs</option>
+                                            <option value="₹5 Lakhs - ₹25 Lakhs">₹5 Lakhs - ₹25 Lakhs</option>
+                                            <option value="₹25 Lakhs - ₹50 Lakhs">₹25 Lakhs - ₹50 Lakhs</option>
+                                            <option value="₹50 Lakhs - ₹1 Crore">₹50 Lakhs - ₹1 Crore</option>
+                                            <option value="₹1 Crore+">₹1 Crore+</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label font-weight-bold text-white small">Employment Type *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
+                                        <select class="form-select" id="pEmployment" required>
+                                            <option value="Salaried Employee">Salaried Employee</option>
+                                            <option value="Self-Employed Professional">Self-Employed Professional</option>
+                                            <option value="Business Owner / MSME">Business Owner / MSME</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label font-weight-bold text-white small">City / Location *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                                        <input type="text" class="form-control" id="pCity" placeholder="e.g. Hyderabad, Telangana" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-default w-100 py-3 font-weight-bold fs-6 shadow-lg d-flex align-items-center justify-content-center gap-2" style="border-radius: 12px; background: linear-gradient(135deg, #00E676 0%, #0E543B 100%); border: none;">
+                                        <span>Submit Loan Application</span>
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

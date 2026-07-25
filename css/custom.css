@@ -8935,3 +8935,64 @@ body.page-contact .btn-default,
     }
 }
 
+/* ==========================================================================
+   PREMIUM POPUP MODAL SPLIT LAYOUT STYLES
+   ========================================================================== */
+
+.custom-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    opacity: 0.85;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 50% !important;
+    padding: 10px !important;
+    transition: all 0.2s ease;
+}
+
+.custom-modal-close:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.extra-small {
+    font-size: 11.5px !important;
+}
+
+.modal-body .input-group-text {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--border-color, #153C2D) !important;
+    color: var(--primary-accent, #00E676) !important;
+}
+
+.modal-body .form-control,
+.modal-body .form-select {
+    background-color: rgba(4, 28, 18, 0.6) !important;
+    border-color: var(--border-color, #153C2D) !important;
+    color: var(--primary-text, #FFFFFF) !important;
+}
+
+.modal-body .form-control:focus,
+.modal-body .form-select:focus {
+    border-color: var(--primary-accent, #00E676) !important;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.2) !important;
+}
+
+html.light-mode .modal-body .form-control,
+html.light-mode .modal-body .form-select,
+body.light-mode .modal-body .form-control,
+body.light-mode .modal-body .form-select {
+    background-color: #FFFFFF !important;
+    border-color: #C8E6C9 !important;
+    color: #0E543B !important;
+}
+
+html.light-mode .modal-body .input-group-text,
+body.light-mode .modal-body .input-group-text {
+    background-color: #F4F8F6 !important;
+    border-color: #C8E6C9 !important;
+    color: #0E543B !important;
+}
+
+
