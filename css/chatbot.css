@@ -1,0 +1,540 @@
+/* ==========================================================================
+   DHALLO CORPORATE FINANCIAL SERVICES - AI CHATBOT WIDGET STYLES
+   ========================================================================== */
+
+:root {
+    --chat-primary: var(--primary-accent, #00E676);
+    --chat-brand: var(--secondary-brand, #0E543B);
+    --chat-gold: var(--luxury-gold, #D1A657);
+    --chat-bg: var(--card-bg, #072216);
+    --chat-site-bg: var(--site-bg, #041C12);
+    --chat-elevated: var(--elevated-bg, #0E3B27);
+    --chat-border: var(--border-color, #153C2D);
+    --chat-text: var(--primary-text, #FFFFFF);
+    --chat-text-muted: var(--secondary-text, #8FA79D);
+}
+
+/* Chatbot Floating Trigger Wrapper */
+#dhallo-chatbot-wrapper {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 99999;
+    font-family: var(--default-font, 'Inter', sans-serif);
+}
+
+/* Floating Trigger Button */
+.dhallo-chat-toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary-brand) 0%, #063826 100%);
+    border: 2px solid var(--primary-accent);
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 230, 118, 0.25), 0 5px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    outline: none;
+}
+
+.dhallo-chat-toggle:hover {
+    transform: scale(1.08) rotate(4deg);
+    box-shadow: 0 12px 30px rgba(0, 230, 118, 0.4), 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.dhallo-chat-toggle i {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.dhallo-chat-toggle.active i.fa-comments {
+    display: none;
+}
+
+.dhallo-chat-toggle.active i.fa-xmark {
+    display: block !important;
+}
+
+.dhallo-chat-toggle i.fa-xmark {
+    display: none;
+}
+
+/* Glowing Pulse Ring Animation */
+.dhallo-chat-pulse {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-accent);
+    animation: dhalloPulse 2s infinite;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+@keyframes dhalloPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(1.35);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.35);
+        opacity: 0;
+    }
+}
+
+/* Online Badge & Counter */
+.dhallo-online-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #00E676;
+    border: 2.5px solid var(--secondary-brand);
+    border-radius: 50%;
+}
+
+.dhallo-unread-badge {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: #EF4444;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Proactive Greeting Tooltip */
+.dhallo-chat-tooltip {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 270px;
+    background: var(--card-bg);
+    border: 1px solid var(--primary-accent);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: var(--primary-text);
+    font-size: 13px;
+    line-height: 1.4;
+    cursor: pointer;
+    animation: dhalloSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: none;
+}
+
+.dhallo-chat-tooltip strong {
+    color: var(--primary-accent);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.dhallo-tooltip-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: var(--secondary-text);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.dhallo-tooltip-close:hover {
+    color: #FFFFFF;
+}
+
+/* Chat Window Container */
+.dhallo-chat-window {
+    position: fixed;
+    bottom: 95px;
+    right: 25px;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    height: 550px;
+    max-height: calc(100vh - 120px);
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 230, 118, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dhallo-chat-window.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Chat Header */
+.dhallo-chat-header {
+    background: linear-gradient(135deg, #041C12 0%, #0E543B 100%);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dhallo-chat-bot-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dhallo-avatar-container {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--elevated-bg);
+    border: 2px solid var(--primary-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+}
+
+.dhallo-avatar-container img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.dhallo-avatar-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #00E676;
+    border: 2px solid #0E543B;
+    border-radius: 50%;
+}
+
+.dhallo-bot-title-area h5 {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.dhallo-bot-title-area p {
+    color: #00E676;
+    font-size: 11px;
+    margin: 2px 0 0 0;
+    font-weight: 500;
+}
+
+.dhallo-chat-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dhallo-header-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #FFFFFF;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dhallo-header-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: var(--primary-accent);
+}
+
+/* Chat Body / Messages Area */
+.dhallo-chat-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--card-bg);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.dhallo-chat-body::-webkit-scrollbar {
+    width: 5px;
+}
+.dhallo-chat-body::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+/* Chat Messages */
+.dhallo-msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    animation: dhalloFadeIn 0.3s ease;
+}
+
+.dhallo-msg.bot-msg {
+    align-self: flex-start;
+}
+
+.dhallo-msg.user-msg {
+    align-self: flex-end;
+}
+
+.dhallo-msg-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.bot-msg .dhallo-msg-bubble {
+    background: var(--elevated-bg);
+    color: var(--primary-text);
+    border: 1px solid var(--border-color);
+    border-top-left-radius: 4px;
+}
+
+.user-msg .dhallo-msg-bubble {
+    background: linear-gradient(135deg, var(--secondary-brand) 0%, #00E676 100%);
+    color: #FFFFFF;
+    font-weight: 500;
+    border-top-right-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.15);
+}
+
+.dhallo-msg-time {
+    font-size: 10px;
+    color: var(--secondary-text);
+    margin-top: 4px;
+}
+
+.bot-msg .dhallo-msg-time {
+    align-self: flex-start;
+}
+
+.user-msg .dhallo-msg-time {
+    align-self: flex-end;
+}
+
+/* Interactive Action Chips inside Bot Messages */
+.dhallo-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.dhallo-chip-btn {
+    background: rgba(0, 230, 118, 0.08);
+    border: 1px solid var(--primary-accent);
+    color: var(--primary-accent);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dhallo-chip-btn:hover {
+    background: var(--primary-accent);
+    color: #041C12;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 230, 118, 0.3);
+}
+
+.dhallo-chip-btn.highlight {
+    background: var(--luxury-gold);
+    border-color: var(--luxury-gold);
+    color: #041C12;
+}
+
+.dhallo-chip-btn.highlight:hover {
+    background: #F7D99E;
+    color: #041C12;
+}
+
+/* Typing Indicator Animation */
+.dhallo-typing-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 14px;
+    background: var(--elevated-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    border-top-left-radius: 4px;
+    width: fit-content;
+}
+
+.dhallo-typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-accent);
+    border-radius: 50%;
+    animation: dhalloBounce 1.4s infinite ease-in-out both;
+}
+
+.dhallo-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.dhallo-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes dhalloBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Chat Footer / Input Area */
+.dhallo-chat-footer {
+    padding: 12px 16px;
+    background: var(--site-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.dhallo-chat-input-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dhallo-chat-input-form input {
+    flex: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--primary-text);
+    padding: 10px 14px;
+    border-radius: 25px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.dhallo-chat-input-form input::placeholder {
+    color: var(--secondary-text);
+}
+
+.dhallo-chat-input-form input:focus {
+    border-color: var(--primary-accent);
+}
+
+.dhallo-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary-brand) 0%, var(--primary-accent) 100%);
+    border: none;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dhallo-send-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.4);
+}
+
+.dhallo-chat-branding {
+    text-align: center;
+    font-size: 10px;
+    color: var(--secondary-text);
+    margin-top: 6px;
+}
+
+/* Keyframes */
+@keyframes dhalloFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dhalloSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 576px) {
+    #dhallo-chatbot-wrapper {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .dhallo-chat-window {
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .dhallo-chat-tooltip {
+        width: calc(100vw - 80px);
+        right: 0;
+    }
+}
+
+/* LIGHT MODE COMPATIBILITY OVERRIDES */
+html.light-mode #dhallo-chatbot-wrapper,
+body.light-mode #dhallo-chatbot-wrapper {
+    --chat-bg: #FFFFFF;
+    --chat-site-bg: #F4F8F6;
+    --chat-elevated: #E8F5E9;
+    --chat-border: #C8E6C9;
+    --chat-text: #0E543B;
+    --chat-text-muted: #4A6B5D;
+}
+
+html.light-mode .bot-msg .dhallo-msg-bubble,
+body.light-mode .bot-msg .dhallo-msg-bubble {
+    background: #EAF4EE;
+    color: #082E20;
+    border-color: #C1E1D1;
+}
+
+html.light-mode .dhallo-chat-input-form input,
+body.light-mode .dhallo-chat-input-form input {
+    background: #FFFFFF;
+    color: #0E543B;
+    border-color: #C8E6C9;
+}
