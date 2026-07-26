@@ -8149,12 +8149,60 @@ body.light-mode #loanApplyModal .modal-title {
 
 
 /* ==========================================================================
-   ANIMATED LOGO (logo_a.gif) FOR BOTH DARK AND LIGHT MODE
+   HEADER & FOOTER LOGO ENGINE (ANIMATED & THEME SWITCHING)
    ========================================================================== */
 
-/* Hide static logo in all theme modes */
+/* Keyframe Animations */
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes logoAmbientGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 4px rgba(247, 217, 158, 0.25)) drop-shadow(0 0 8px rgba(52, 211, 153, 0.15));
+    }
+    50% {
+        filter: drop-shadow(0 0 12px rgba(247, 217, 158, 0.55)) drop-shadow(0 0 16px rgba(52, 211, 153, 0.35));
+    }
+}
+
+@keyframes logoShimmerPulse {
+    0% {
+        filter: brightness(1) drop-shadow(0 0 6px rgba(247, 217, 158, 0.3));
+    }
+    50% {
+        filter: brightness(1.15) drop-shadow(0 0 16px rgba(247, 217, 158, 0.7)) drop-shadow(0 0 22px rgba(52, 211, 153, 0.4));
+    }
+    100% {
+        filter: brightness(1) drop-shadow(0 0 6px rgba(247, 217, 158, 0.3));
+    }
+}
+
+/* Base Logo Styling (Dark Mode - Default Theme) */
 .navbar-brand .logo-dark,
-.footer-logo .logo-dark,
+.footer-logo .logo-dark {
+    display: inline-block !important;
+    max-height: 55px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    animation: logoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards, logoAmbientGlow 4s ease-in-out infinite 0.8s !important;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease !important;
+    will-change: transform, filter;
+}
+
+.navbar-brand .logo-light,
+.footer-logo .logo-light {
+    display: none !important;
+}
+
+/* Light Mode Logo Switch */
 html.light-mode .navbar-brand .logo-dark,
 html.light-mode .footer-logo .logo-dark,
 body.light-mode .navbar-brand .logo-dark,
@@ -8162,9 +8210,6 @@ body.light-mode .footer-logo .logo-dark {
     display: none !important;
 }
 
-/* Always display animated logo (logo_a.gif) in both Dark and Light Mode */
-.navbar-brand .logo-light,
-.footer-logo .logo-light,
 html.light-mode .navbar-brand .logo-light,
 html.light-mode .footer-logo .logo-light,
 body.light-mode .navbar-brand .logo-light,
@@ -8173,12 +8218,23 @@ body.light-mode .footer-logo .logo-light {
     max-height: 55px !important;
     width: auto !important;
     object-fit: contain !important;
-    transition: transform 0.3s ease !important;
+    animation: logoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease !important;
+    will-change: transform, filter;
+}
+
+/* Interactive Hover Animation */
+.navbar-brand:hover .logo-dark,
+.footer-logo:hover .logo-dark {
+    transform: translateY(-2px) scale(1.06) !important;
+    filter: drop-shadow(0 0 16px rgba(247, 217, 158, 0.75)) drop-shadow(0 0 24px rgba(52, 211, 153, 0.5)) !important;
+    animation: logoShimmerPulse 1.8s ease-in-out infinite !important;
 }
 
 .navbar-brand:hover .logo-light,
 .footer-logo:hover .logo-light {
-    transform: scale(1.04) !important;
+    transform: translateY(-2px) scale(1.06) !important;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) !important;
 }
 
 
